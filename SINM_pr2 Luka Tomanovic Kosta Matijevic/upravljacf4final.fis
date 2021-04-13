@@ -1,0 +1,44 @@
+[System]
+Name='upravljacf4final'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='e'
+Range=[-0.8 0.8]
+NumMFs=3
+MF1='negativna':'trimf',[-0.8 -0.8 0]
+MF2='nula':'trimf',[-0.2 0 0.2]
+MF3='pozitivna':'trimf',[0 0.8 0.8]
+
+[Input2]
+Name='de'
+Range=[-0.025 0.025]
+NumMFs=2
+MF1='negativna':'trimf',[-0.025 -0.025 0]
+MF2='pozitivna':'trimf',[0 0.025 0.025]
+
+[Output1]
+Name='u'
+Range=[-5 5]
+NumMFs=5
+MF1='malo':'trapmf',[-5 -5 -3.5 -1.65]
+MF2='srednje':'trimf',[-1.65 0 1.65]
+MF3='veliko':'trapmf',[1.65 3.5 5 5]
+MF4='srednje_malo':'trimf',[-3.3 -1.65 0]
+MF5='srednje_veliko':'trimf',[0 1.65 3.3]
+
+[Rules]
+1 0, 1 (1) : 1
+3 0, 3 (1) : 1
+2 0, 2 (1) : 1
+2 1, 4 (1) : 1
+2 2, 5 (1) : 1
